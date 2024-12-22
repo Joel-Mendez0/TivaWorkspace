@@ -1,0 +1,84 @@
+/*
+ * lcd.c
+ *
+ *  Created on: Dec 18, 2024
+ *      Author: Joel
+ */
+#include "lcd.h"
+
+void master_i2c_transmit_init(){
+
+    // Enable Clock
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C0);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_I2C0) && !SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOB));
+    // Configure Pins
+    GPIOPinConfigure(GPIO_PB2_I2C0SCL);
+    GPIOPinConfigure(GPIO_PB3_I2C0SDA);
+    // Set Pins to I2C mode
+    GPIOPinTypeI2C(GPIO_PORTB_BASE, GPIO_PIN_3);
+    GPIOPinTypeI2CSCL(GPIO_PORTB_BASE, GPIO_PIN_2);
+    // Initialize I2C Master Module
+    I2CMasterInitExpClk(I2C0_BASE, SysCtlClockGet(), 0);
+
+
+}
+
+void master_i2c_transmit(uint8_t ui8SlaveAddr, uint8_t ui8data){
+    I2CMasterSlaveAddrSet(I2C0_BASE, ui8SlaveAddr, 0);
+    I2CMasterDataPut(I2C0_BASE, ui8data);
+    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_SINGLE_SEND);
+    while (I2CMasterBusy(I2C0_BASE));
+}
+
+void lcd_send_cmd(uint8_t cmd) {
+    uint8_t highNibble = cmd & 0xF0;  // High nibble
+    uint8_t lowNibble = (cmd << 4) & 0xF0; // Low nibble
+
+    // Send high nibble
+    master_i2c_transmit(0x27, highNibble | LCD_BACKLIGHT | LCD_ENABLE_BIT);
+    master_i2c_transmit(0x27, highNibble | LCD_BACKLIGHT);
+
+    // Send low nibble
+    master_i2c_transmit(0x27, lowNibble | LCD_BACKLIGHT | LCD_ENABLE_BIT);
+    master_i2c_transmit(0x27, lowNibble | LCD_BACKLIGHT);
+}
+
+void lcd_send_data(uint8_t data) {
+    uint8_t highNibble = data & 0xF0;  // High nibble
+    uint8_t lowNibble = (data << 4) & 0xF0; // Low nibble
+
+    // Send high nibble
+    master_i2c_transmit(0x27, highNibble | LCD_BACKLIGHT | LCD_ENABLE_BIT | 0x01);
+    master_i2c_transmit(0x27, highNibble | LCD_BACKLIGHT | 0x01);
+
+    // Send low nibble
+    master_i2c_transmit(0x27, lowNibble | LCD_BACKLIGHT | LCD_ENABLE_BIT | 0x01);
+    master_i2c_transmit(0x27, lowNibble | LCD_BACKLIGHT | 0x01);
+}
+
+void lcd_clear(){
+
+}
+void lcd_put_cur(uint8_t row, uint8_t col){
+
+}
+void lcd_init() {
+    SysCtlDelay(SysCtlClockGet() / 3 / 50); // Wait for >15ms after power ON
+    lcd_send_cmd(0x30);                     // Initialize LCD in 8-bit mode
+    SysCtlDelay(SysCtlClockGet() / 3 / 200); // Wait >4.1ms
+    lcd_send_cmd(0x30);
+    SysCtlDelay(SysCtlClockGet() / 3 / 200); // Wait >100µs
+    lcd_send_cmd(0x30);
+    lcd_send_cmd(0x20);                     // Switch to 4-bit mode
+
+    // Configure LCD
+    lcd_send_cmd(LCD_FUNCTION_SET);         // 2-line, 4-bit mode
+    lcd_send_cmd(LCD_DISPLAY_CONTROL);      // Display ON, Cursor OFF, Blink OFF
+    lcd_send_cmd(LCD_CLEAR_DISPLAY);        // Clear display
+    lcd_send_cmd(LCD_ENTRY_MODE_SET);       // Increment cursor, no display shift
+}
+
+void lcd_send_string(char* str){
+
+}

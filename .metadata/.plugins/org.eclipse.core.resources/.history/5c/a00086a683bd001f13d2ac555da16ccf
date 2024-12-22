@@ -1,0 +1,21 @@
+#include "lcd.h"
+
+int main(void) {
+    // Set system clock
+    SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN);
+
+    // Initialize I2C and LCD
+    master_i2c_transmit_init();
+    lcd_init();
+
+    // Display text
+    lcd_put_cur(0, 0);
+    lcd_send_string("Hello, Joel!");
+
+    lcd_put_cur(1, 0);
+    lcd_send_string("I2C LCD Test");
+
+    while (1) {
+        // Loop forever
+    }
+}

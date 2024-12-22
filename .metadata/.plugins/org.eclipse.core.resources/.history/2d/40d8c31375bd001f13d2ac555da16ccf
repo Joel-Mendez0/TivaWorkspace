@@ -1,0 +1,14 @@
+/*
+ * lcd.h
+ *
+ *  Created on: Dec 18, 2024
+ *      Author: Joel
+ */
+
+#ifndef LCD_H_
+#define LCD_H_
+
+#include "driverlib/i2c.h"
+
+
+#endif /* LCD_H_ */

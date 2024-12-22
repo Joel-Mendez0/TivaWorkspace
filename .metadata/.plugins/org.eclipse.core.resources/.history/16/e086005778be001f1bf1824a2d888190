@@ -1,0 +1,15 @@
+/*
+ * Util.h
+ *
+ *  Created on: Dec 19, 2024
+ *      Author: Joel
+ */
+
+#ifndef INCLUDE_UTIL_H_
+#define INCLUDE_UTIL_H_
+
+#include "driverlib/sysctl.h"
+
+void DelayMs(uint32_t ms);
+
+#endif /* INCLUDE_UTIL_H_ */

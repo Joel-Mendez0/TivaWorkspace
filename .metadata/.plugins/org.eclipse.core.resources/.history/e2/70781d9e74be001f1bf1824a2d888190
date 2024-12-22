@@ -1,0 +1,26 @@
+/*
+ * PeripheralConfiguration.h
+ *
+ *  Created on: Dec 19, 2024
+ *      Author: Joel
+ */
+
+#ifndef INCLUDE_PERIPHERALCONFIGURATION_H_
+#define INCLUDE_PERIPHERALCONFIGURATION_H_
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/timer.h"
+#include "driverlib/gpio.h"
+#include "tm4c123gh6pm.h"
+
+void ConfigureUART();
+void UARTPrint(uint32_t ui32Base, const char* str);
+void ConfigureBoardLED();
+
+
+#endif /* INCLUDE_PERIPHERALCONFIGURATION_H_ */

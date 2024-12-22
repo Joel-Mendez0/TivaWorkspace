@@ -1,0 +1,4 @@
+RELOAD_PROGRAM_IF_CHANGED=always
+eclipse.preferences.version=1
+symbolAutoCompleteHistory<seperator>org.eclipse.cdt.dsf.debug.ui.disassembly.view<seperator>Stellaris\ In-Circuit\ Debug\ Interface\\CORTEX_M4_0=R0
+useAnnotationsPrefPage=true

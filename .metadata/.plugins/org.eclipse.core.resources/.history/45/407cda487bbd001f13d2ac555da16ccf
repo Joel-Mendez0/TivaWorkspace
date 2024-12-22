@@ -1,0 +1,39 @@
+/*
+ * lcd.c
+ *
+ *  Created on: Dec 18, 2024
+ *      Author: Joel
+ */
+#include "lcd.h"
+
+void master_i2c_transmit_init(){
+
+    // Enable Clock
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C0);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_I2C0) && !SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOB));
+    // Configure Pins
+    GPIOPinConfigure(GPIO_PB2_I2C0SCL);
+    GPIOPinConfigure(GPIO_PB3_I2C0SDA);
+
+
+}
+
+void lcd_send_cmd(uint8_t cmd){
+
+}
+void lcd_send_data(uint8_t data){
+
+}
+void lcd_clear(){
+
+}
+void lcd_put_cur(uint8_t row, uint8_t col){
+
+}
+void lcd_init(){
+
+}
+void lcd_send_string(char* str){
+
+}

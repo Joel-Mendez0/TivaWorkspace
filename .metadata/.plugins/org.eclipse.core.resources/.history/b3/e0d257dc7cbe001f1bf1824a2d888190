@@ -1,0 +1,9 @@
+#include "Util.h"
+
+void DelayMs(uint32_t ms){
+    uint32_t SystemClock = SysCtlClockGet();
+    uint32_t count = (SystemClock / 3000) * ms;
+    SysCtlDelay(count);
+}
+
+

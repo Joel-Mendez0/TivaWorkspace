@@ -1,0 +1,39 @@
+#include "Util.h"
+
+void DelayMs(uint32_t ms){
+    uint32_t SystemClock = SysCtlClockGet();
+    uint32_t count = (SystemClock / 3000) * ms;
+    SysCtlDelay(count);
+}
+
+void uint32_to_char_buffer(uint32_t value, char *buffer, size_t buffer_size) {
+    if (buffer == NULL || buffer_size == 0) {
+        return; // Invalid buffer or size
+    }
+
+    // Ensure at least space for null-terminator
+    if (buffer_size < 2) {
+        buffer[0] = '\0';
+        return;
+    }
+
+    size_t index = buffer_size - 1; // Start from the last position
+    buffer[index] = '\0'; // Null-terminate the string
+
+    do {
+        if (index == 0) { // Not enough space
+            buffer[0] = '\0';
+            return;
+        }
+        --index;
+        buffer[index] = '0' + (value % 10); // Extract least significant digit
+        value /= 10;
+    } while (value > 0);
+
+    // Shift the result to the beginning of the buffer if needed
+    size_t start = index;
+    size_t i;
+    for (i = 0 ; start < buffer_size; ++i, ++start) {
+        buffer[i] = buffer[start];
+    }
+}

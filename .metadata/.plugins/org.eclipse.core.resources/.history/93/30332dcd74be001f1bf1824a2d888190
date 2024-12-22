@@ -1,0 +1,29 @@
+/*
+ * PeripheralConfiguration.h
+ *
+ *  Created on: Dec 19, 2024
+ *      Author: Joel
+ */
+
+#ifndef INCLUDE_PERIPHERALCONFIGURATION_H_
+#define INCLUDE_PERIPHERALCONFIGURATION_H_
+
+#define HIGH_ON_BOARD GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3)
+#define LOW_ON_BOARD GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3, 0)
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/timer.h"
+#include "driverlib/gpio.h"
+#include "tm4c123gh6pm.h"
+
+void ConfigureUART();
+void UARTPrint(uint32_t ui32Base, const char* str);
+void ConfigureBoardLED();
+
+
+#endif /* INCLUDE_PERIPHERALCONFIGURATION_H_ */

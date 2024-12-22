@@ -1,0 +1,24 @@
+#include "PeripheralConfiguration.h"
+#include "Util.h"
+
+int main(void) {
+
+    SysCtlClockSet(SYSCTL_SYSDIV_16 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
+
+    ConfigureUART();
+    ConfigureBoardLED();
+    ConfigureI2C();
+
+    uint32_t SystemClock = SysCtlClockGet();
+    char buffer[10];
+    itoa(SystemClock, buffer);
+    UARTPrint(UART0_BASE, "System Clock: ");
+    UARTPrint(UART0_BASE, buffer);
+    UARTPrint(UART0_BASE, " Hz\r\n");
+
+    I2CMasterSlaveAddrSet(I2C0_BASE, LCD_ADDRESS, false);
+    I2CMasterDataPut(I2C0_BASE, (uint8_t)0);
+    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_SINGLE_SEND);
+    while (I2CMasterBusy(I2C0_BASE));
+
+}
