@@ -1,0 +1,18 @@
+
+**** Build of configuration Debug for project Test ****
+
+/home/joel/ti/ccs1281/ccs/utils/bin/gmake -k -j 24 all -O 
+ 
+Building file: "../main.c"
+Invoking: Arm Compiler
+"/home/joel/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/joel/workspace_v12/Test" --include_path="/home/joel/ti/Tiva_C_Series/inc" --include_path="/home/joel/ti/Tiva_C_Series" --include_path="/home/joel/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="main.d_raw"  "../main.c"
+Finished building: "../main.c"
+ 
+Building target: "Test.out"
+Invoking: Arm Linker
+"/home/joel/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Test.map" --heap_size=0 --stack_size=512 -i"/home/joel/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"/home/joel/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Test_linkInfo.xml" --rom_model -o "Test.out" "./main.obj" "./tm4c123gh6pm_startup_ccs.obj" "../tm4c123gh6pm.cmd"  -llibc.a -l"/home/joel/ti/Tiva_C_Series/driverlib/ccs/Debug/driverlib.lib" 
+<Linking>
+Finished building target: "Test.out"
+ 
+
+**** Build Finished ****

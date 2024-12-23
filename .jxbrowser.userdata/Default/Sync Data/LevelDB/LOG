@@ -1,3 +1,2 @@
-2024/12/17-18:03:16.834 624c Reusing MANIFEST C:\Users\Joel\workspace_v12\.jxbrowser.userdata\Default\Sync Data\LevelDB/MANIFEST-000001
-2024/12/17-18:03:16.838 624c Recovering log #3
-2024/12/17-18:03:16.839 624c Reusing old log C:\Users\Joel\workspace_v12\.jxbrowser.userdata\Default\Sync Data\LevelDB/000003.log 
+2024/12/23-14:06:04.881 3800 Creating DB /home/joel/workspace_v12/.jxbrowser.userdata/Default/Sync Data/LevelDB since it was missing.
+2024/12/23-14:06:04.904 3800 Reusing MANIFEST /home/joel/workspace_v12/.jxbrowser.userdata/Default/Sync Data/LevelDB/MANIFEST-000001

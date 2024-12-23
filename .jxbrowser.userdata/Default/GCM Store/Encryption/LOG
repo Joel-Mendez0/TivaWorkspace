@@ -1,3 +1,2 @@
-2024/12/17-18:03:21.010 4c74 Reusing MANIFEST C:\Users\Joel\workspace_v12\.jxbrowser.userdata\Default\GCM Store\Encryption/MANIFEST-000001
-2024/12/17-18:03:21.010 4c74 Recovering log #3
-2024/12/17-18:03:21.011 4c74 Reusing old log C:\Users\Joel\workspace_v12\.jxbrowser.userdata\Default\GCM Store\Encryption/000003.log 
+2024/12/23-14:06:07.216 3979 Creating DB /home/joel/workspace_v12/.jxbrowser.userdata/Default/GCM Store/Encryption since it was missing.
+2024/12/23-14:06:07.234 3979 Reusing MANIFEST /home/joel/workspace_v12/.jxbrowser.userdata/Default/GCM Store/Encryption/MANIFEST-000001

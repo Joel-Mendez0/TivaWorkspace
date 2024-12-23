@@ -1,0 +1,25 @@
+/**
+ * main.c
+ */
+
+#include <stdint.h>
+#include "inc/hw_memmap.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/gpio.h"
+
+void DelayMs(uint32_t ms)
+
+int main(void)
+{
+    SysCtlClockSet(SYSCTL_SYSDIV_16 | SYSCTL_USE_OSC | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN);
+
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+
+    GPIOPinTypeGPIOOutputOD(GPIO_PORTF_BASE, GPIO_PIN_2);
+
+    while(1){
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
+    }
+
+	return 0;
+}

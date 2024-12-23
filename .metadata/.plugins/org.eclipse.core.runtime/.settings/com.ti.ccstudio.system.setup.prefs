@@ -1,2 +1,2 @@
-DEFAULT_CCS_TARGET_CONFIGURATION=C\:\\Users\\Joel\\workspace_v12\\Blinky\\targetConfigs\\Tiva TM4C123GH6PM.ccxml
+DEFAULT_CCS_TARGET_CONFIGURATION=/home/joel/workspace_v12/Test/targetConfigs/Tiva TM4C123GH6PM.ccxml
 eclipse.preferences.version=1
