@@ -20,15 +20,15 @@ int main(void)
 
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2);
 
     bool Running = true;
 
     while(Running){
-        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
-        DelayMs(500);
-        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
-        DelayMs(500);
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2, GPIO_PIN_1 | GPIO_PIN_2);
+        DelayMs(1000);
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2, 0);
+        DelayMs(1000);
     }
 
     return 0;
